@@ -1,0 +1,20 @@
+name: QuicheBindings
+description: Bindings for Cloudflare Quiche
+output: 'lib/quiche_bindings.dart'
+llvm-path:
+  - 'C:\msys64\mingw64'
+
+# This allows the tool to finish even if MinGW's headers are "noisy"
+ignore-source-errors: true
+
+headers:
+  entry-points:
+    - 'C:/www/rust/quiche/quiche/include/quiche.h'
+  # This filter ensures ffigen focuses only on the Quiche API
+  include-directives:
+    - 'C:/www/rust/quiche/quiche/include/quiche.h'
+
+compiler-opts:
+  - '-IC:/msys64/mingw64/include'
+  - '-IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include'
+  - '--target=x86_64-w64-windows-gnu'
